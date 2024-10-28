@@ -1,3 +1,5 @@
+package com.otmane.Tondeuse;
+
 import com.otmane.Tondeuse.enums.Commande;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

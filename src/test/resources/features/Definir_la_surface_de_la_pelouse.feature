@@ -1,12 +1,12 @@
 Feature: Definir si les coordonnées du coint supérieurs droit sont valid
-  Scenario: Les coordonnées du coin supérieur droit sont supérieur à 0
-    When le coin supérieur est en x=5 et y=5
-    Then les coordonées du coin supérieur droit sont valid
+  Scenario Outline: Validation de la position du coint supérieurs
+    When le coin supérieur est en x=<x_max> et y=<y_max>
+    Then la position est <result>
 
-  Scenario: Au moin un des coordonées du coint supérieur droit est supérieur à 0
-    When le coin supérieur est en x=5 et y=0
-    Then les coordonées du coin supérieur droit sont valid
-
-  Scenario: Au moin un des coordonées du coint supérieur droit est inférieur à 0
-    When le coin supérieur est en x=5 et y=-1
-    Then les coordonées du coin supérieur droit sont invalid
+    Examples:
+      | x_max | y_max | result  |
+      | 5     | 5     | valid   |
+      | -5    | 5     | invalid |
+      | 5     | -5    | invalid |
+      | 0     | 0     | valid |
+      | -5    | -5    | invalid |

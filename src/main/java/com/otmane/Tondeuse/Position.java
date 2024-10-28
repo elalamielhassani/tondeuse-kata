@@ -24,4 +24,20 @@ public class Position {
     public boolean isValid() {
         return x>=0 && y>=0;
     }
+
+    public void bougerEnHaut() {
+        y++;
+    }
+
+    public void bougerADroite() {
+        x++;
+    }
+
+    public void bougerEnBas() {
+        y--;
+    }
+
+    public void bougerAGauche() {
+        x--;
+    }
 }

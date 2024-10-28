@@ -1,10 +1,17 @@
 package com.otmane.Tondeuse;
 
+import com.otmane.Tondeuse.enums.Commande;
+import com.otmane.Tondeuse.enums.Direction;
+
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 public class Tondeuse {
 
     private Position position;
     private Direction direction;
     private String id;
+    private Queue<String> commandes = new ArrayDeque<>();
 
     public void setPosition(Position position) {
         this.position = position;
@@ -30,6 +37,14 @@ public class Tondeuse {
         return id;
     }
 
+    public Queue<String> getCommandes() {
+        return commandes;
+    }
+
+    public void setCommandes(Queue<String> commandes) {
+        this.commandes = commandes;
+    }
+
     public boolean isPositionValid(Position coinSupieur) {
         return this.getPosition().isValid() &&
                 coinSupieur.isValid() &&
@@ -46,4 +61,18 @@ public class Tondeuse {
     }
 
 
+    public void apply(Commande commande) {
+        switch (commande){
+            case D -> setDirection(this.direction.tournerDroite());
+            case G -> setDirection(this.direction.tournerGauche());
+            case A ->{
+                switch (this.direction){
+                    case N -> this.position.bougerEnHaut();
+                    case E -> this.position.bougerADroite();
+                    case S -> this.position.bougerEnBas();
+                    case W -> this.position.bougerAGauche();
+                }
+            }
+        }
+    }
 }

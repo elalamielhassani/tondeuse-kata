@@ -4,6 +4,7 @@ Feature: Déplacement de la tondeuse
   Scenario Outline: La tondeuse tourne et avance en fonction des commandes
     Given la tondeuse est orientée vers "<direction_initiale>"
     And la position de la tondeuse est en x=<x> et y=<y>
+    And le coin supérieur de la pelouse est en x=5 et y=5
     When la tondeuse reçoit la commande "<commande>"
     Then la nouvelle orientation de la tondeuse est "<direction_finale>"
     And la nouvelle position de la tondeuse est x=<new_x> et y=<new_y>

@@ -1,7 +1,7 @@
+package com.otmane.Tondeuse;
+
 import com.otmane.Tondeuse.enums.Commande;
 import com.otmane.Tondeuse.enums.Direction;
-import com.otmane.Tondeuse.Position;
-import com.otmane.Tondeuse.Tondeuse;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -41,4 +41,13 @@ public class DeplacementDeLaTandeuse {
         Assertions.assertEquals(x, tondeuse.getPosition().getX());
         Assertions.assertEquals(y, tondeuse.getPosition().getY());
     }
+
+    @And("le coin supérieur de la pelouse est en x={int} et y={int}")
+    public void leCoinSuperieurDeLaPelouseEstEnXEtY(int x, int y) {
+        Position coinSuperieur = new Position();
+        coinSuperieur.setX(x);
+        coinSuperieur.setY(y);
+        tondeuse.setCoinSuperieur(coinSuperieur);
+    }
+
 }

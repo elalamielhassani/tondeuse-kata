@@ -22,22 +22,30 @@ public class Position {
     }
 
     public boolean isValid() {
-        return x>=0 && y>=0;
+        return x >= 0 && y >= 0;
     }
 
-    public void bougerEnHaut() {
-        y++;
+    public void bougerEnHaut(int yMax) {
+        if (this.y < yMax) {
+            y++;
+        }
     }
 
-    public void bougerADroite() {
-        x++;
+    public void bougerADroite(int xMax) {
+        if (this.x < xMax) {
+            x++;
+        }
     }
 
     public void bougerEnBas() {
-        y--;
+        if (this.y > 0) {
+            y--;
+        }
     }
 
     public void bougerAGauche() {
-        x--;
+        if (this.x > 0) {
+            x--;
+        }
     }
 }

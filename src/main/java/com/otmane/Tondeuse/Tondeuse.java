@@ -9,6 +9,7 @@ import java.util.Queue;
 public class Tondeuse {
 
     private Position position;
+    private Position coinSuperieur;
     private Direction direction;
     private String id;
     private Queue<String> commandes = new ArrayDeque<>();
@@ -45,6 +46,14 @@ public class Tondeuse {
         this.commandes = commandes;
     }
 
+    public Position getCoinSuperieur() {
+        return coinSuperieur;
+    }
+
+    public void setCoinSuperieur(Position coinSuperieur) {
+        this.coinSuperieur = coinSuperieur;
+    }
+
     public boolean isPositionValid(Position coinSupieur) {
         return this.getPosition().isValid() &&
                 coinSupieur.isValid() &&
@@ -65,14 +74,16 @@ public class Tondeuse {
         switch (commande){
             case D -> setDirection(this.direction.tournerDroite());
             case G -> setDirection(this.direction.tournerGauche());
-            case A ->{
-                switch (this.direction){
-                    case N -> this.position.bougerEnHaut();
-                    case E -> this.position.bougerADroite();
-                    case S -> this.position.bougerEnBas();
-                    case W -> this.position.bougerAGauche();
-                }
-            }
+            case A -> mouve();
+        }
+    }
+
+    private void mouve() {
+        switch (this.direction){
+            case N -> this.position.bougerEnHaut(coinSuperieur.getY());
+            case E -> this.position.bougerADroite(coinSuperieur.getX());
+            case S -> this.position.bougerEnBas();
+            case W -> this.position.bougerAGauche();
         }
     }
 }

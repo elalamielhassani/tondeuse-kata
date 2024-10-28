@@ -51,11 +51,10 @@ Le programme prend un fichier d'entrée structuré ainsi :
 # US 4 - Empêcher la tondeuse de sortir de la pelouse
 - `En tant` qu'utilisateur de la tondeuse,
 - `je veux` que la tondeuse respecte les limites de la pelouse,
-- `afin` que celle-ci ne sorte pas de la surface définie et n'endommage rien en dehors de la pelouse.
+- `afin` que celle-ci ne sorte pas de la surface définie.
 
 ## Critères d'acceptation :
 - Si la tondeuse reçoit une commande qui la placerait en dehors de la pelouse, elle ignore cette commande et conserve sa position et orientation actuelles.
-- La tondeuse continue d'exécuter les autres commandes dans la séquence.
 
 # US 5 - Traiter plusieurs tondeuses
 - `En tant` qu'utilisateur de la tondeuse,

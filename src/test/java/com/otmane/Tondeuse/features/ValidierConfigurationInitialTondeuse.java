@@ -1,5 +1,8 @@
-package com.otmane.Tondeuse;
+package com.otmane.Tondeuse.features;
 
+import com.otmane.Tondeuse.entities.Position;
+import com.otmane.Tondeuse.entities.Tondeuse;
+import com.otmane.Tondeuse.enums.Direction;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -8,35 +11,36 @@ import org.junit.jupiter.api.Assertions;
 
 public class ValidierConfigurationInitialTondeuse {
     Tondeuse tondeuse;
-    Position coinSupieur;
 
-    @Given("une tondeuse avec l'id {}")
-    public void uneTondeuseAvecLId(String id) {
+    @Given("une tondeuse avec l'id {int}")
+    public void uneTondeuseAvecLId(int id) {
         tondeuse = new Tondeuse();
         tondeuse.setId(id);
     }
 
     @When("les coordonnées initiales de la tondeuse sont valid")
     public void lesCoordonneesInitialesDeLaTondeuseSontValid() {
-        coinSupieur = new Position();
+        Position coinSupieur = new Position();
         coinSupieur.setX(5);
         coinSupieur.setY(5);
         Position positionInitial = new Position();
         positionInitial.setX(2);
         positionInitial.setY(2);
         tondeuse.setPosition(positionInitial);
+        tondeuse.setCoinSuperieur(coinSupieur);
         Assertions.assertTrue(tondeuse.isPositionValid(coinSupieur));
     }
 
     @When("les coordonnées initiales de la tondeuse sont invalid")
     public void lesCoordonneesInitialesDeLaTondeuseSontInvalid() {
-        coinSupieur = new Position();
+        Position coinSupieur = new Position();
         coinSupieur.setX(5);
         coinSupieur.setY(5);
         Position positionInitial = new Position();
         positionInitial.setX(2);
         positionInitial.setY(10);
         tondeuse.setPosition(positionInitial);
+        tondeuse.setCoinSuperieur(coinSupieur);
         Assertions.assertFalse(tondeuse.isPositionValid(coinSupieur));
     }
 
@@ -54,12 +58,12 @@ public class ValidierConfigurationInitialTondeuse {
 
     @Then("la configuration est valid")
     public void laConfigurationEstValid() {
-        Assertions.assertTrue(tondeuse.isInitialConfValid(coinSupieur));
+        Assertions.assertTrue(tondeuse.isInitialConfValid());
     }
 
     @Then("la configuration est invalid")
     public void laConfigurationEstInvalid() {
-        Assertions.assertFalse(tondeuse.isInitialConfValid(coinSupieur));
+        Assertions.assertFalse(tondeuse.isInitialConfValid());
     }
 
 }

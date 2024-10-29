@@ -1,5 +1,6 @@
-package com.otmane.Tondeuse;
+package com.otmane.Tondeuse.features;
 
+import com.otmane.Tondeuse.enums.Direction;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.jupiter.api.Assertions;

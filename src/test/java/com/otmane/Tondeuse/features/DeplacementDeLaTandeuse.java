@@ -1,5 +1,7 @@
-package com.otmane.Tondeuse;
+package com.otmane.Tondeuse.features;
 
+import com.otmane.Tondeuse.entities.Position;
+import com.otmane.Tondeuse.entities.Tondeuse;
 import com.otmane.Tondeuse.enums.Commande;
 import com.otmane.Tondeuse.enums.Direction;
 import io.cucumber.java.en.And;

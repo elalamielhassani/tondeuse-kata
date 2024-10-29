@@ -1,4 +1,4 @@
-package com.otmane.Tondeuse;
+package com.otmane.Tondeuse.entities;
 
 public class Position {
     private int x;

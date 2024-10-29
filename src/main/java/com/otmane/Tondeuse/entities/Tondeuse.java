@@ -1,4 +1,4 @@
-package com.otmane.Tondeuse;
+package com.otmane.Tondeuse.entities;
 
 import com.otmane.Tondeuse.enums.Commande;
 import com.otmane.Tondeuse.enums.Direction;
@@ -11,8 +11,8 @@ public class Tondeuse {
     private Position position;
     private Position coinSuperieur;
     private Direction direction;
-    private String id;
-    private Queue<String> commandes = new ArrayDeque<>();
+    private int id;
+    private Queue<Commande> commandes = new ArrayDeque<>();
 
     public void setPosition(Position position) {
         this.position = position;
@@ -30,24 +30,16 @@ public class Tondeuse {
         return direction;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public Queue<String> getCommandes() {
+    public Queue<Commande> getCommandes() {
         return commandes;
     }
 
-    public void setCommandes(Queue<String> commandes) {
+    public void setCommandes(Queue<Commande> commandes) {
         this.commandes = commandes;
-    }
-
-    public Position getCoinSuperieur() {
-        return coinSuperieur;
     }
 
     public void setCoinSuperieur(Position coinSuperieur) {
@@ -65,10 +57,14 @@ public class Tondeuse {
         return direction != null;
     }
 
-    public boolean isInitialConfValid(Position coinSupieur) {
-        return isPositionValid(coinSupieur) && this.isDirectionValid();
+    public boolean isInitialConfValid() {
+        return isPositionValid(this.coinSuperieur) && this.isDirectionValid();
     }
 
+    public void start(){
+            commandes.forEach(this::apply);
+
+    }
 
     public void apply(Commande commande) {
         switch (commande){

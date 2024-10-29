@@ -1,4 +1,4 @@
-package com.otmane.Tondeuse;
+package com.otmane.Tondeuse.features;
 
 import com.otmane.Tondeuse.enums.Direction;
 import io.cucumber.java.en.Given;

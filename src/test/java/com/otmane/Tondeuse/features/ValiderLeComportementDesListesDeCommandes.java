@@ -1,5 +1,7 @@
-package com.otmane.Tondeuse;
+package com.otmane.Tondeuse.features;
 
+import com.otmane.Tondeuse.entities.Tondeuse;
+import com.otmane.Tondeuse.enums.Commande;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -18,7 +20,8 @@ public class ValiderLeComportementDesListesDeCommandes {
 
     @When("j'ajoute {string} dans la file")
     public void jAjouteDansLaFile(String commande) {
-        tondeuse.getCommandes().add(commande);
+        Commande commande1 = Commande.valueOf(commande);
+        tondeuse.getCommandes().add(commande1);
 
     }
 
@@ -29,7 +32,7 @@ public class ValiderLeComportementDesListesDeCommandes {
 
     @When("je retire un élément de la file")
     public void jeRetireUnElementDeLaFile() {
-        commande = tondeuse.getCommandes().poll();
+        commande = tondeuse.getCommandes().poll().name();
     }
 
     @Then("l'élément retiré est {string}")
@@ -40,7 +43,7 @@ public class ValiderLeComportementDesListesDeCommandes {
 
     @And("le premier élément de la file est {string}")
     public void lePremierElementDeLaFileEst(String arg0) {
-        Assertions.assertEquals(arg0, tondeuse.getCommandes().element());
+        Assertions.assertEquals(arg0, tondeuse.getCommandes().element().name());
     }
 
     @Then("la file est vide")
